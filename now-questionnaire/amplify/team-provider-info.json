@@ -10,6 +10,11 @@
       "StackName": "amplify-nowquestionnaire-develop-232956",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:519370276548:stack/amplify-nowquestionnaire-develop-232956/5dc8bdd0-b265-11eb-a07f-064a883b3c10",
       "AmplifyAppId": "d2fy78nekejnms"
+    },
+    "categories": {
+      "auth": {
+        "nowquestionnairec0673da4": {}
+      }
     }
   }
 }
