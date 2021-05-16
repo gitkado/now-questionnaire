@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "nowquestionnaire",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authnowquestionnairec0673da4",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

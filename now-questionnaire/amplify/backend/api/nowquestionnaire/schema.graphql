@@ -1,0 +1,17 @@
+type Questionnaire
+  @model (
+    mutations: {create: "createQuestionnaire", delete: "deleteQuestionnaire", update: "updateQuestionnaire"}
+    timestamps: null
+    subscriptions: { level: public }
+  )
+  @auth(rules: [
+    {allow: owner, ownerField:"owner", provider: userPools, operations:[read, create, delete, update]}
+    {allow: private, provider: userPools, operations:[read]}
+  ])
+  @key(name: "BySpecificOwner", fields:["owner", "timestamp"], queryField: "listQuestionnairesBySpecificOwner")
+{
+  id: ID
+  content: String!
+  owner: String
+  timestamp: Int!
+}
