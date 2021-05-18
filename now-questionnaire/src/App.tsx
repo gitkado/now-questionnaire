@@ -3,6 +3,7 @@ import Amplify from 'aws-amplify'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
 import awsconfig from './aws-exports'
 import { AmplifyAuthenticator, AmplifySignOut, AmplifySignUp } from "@aws-amplify/ui-react";
+import QuestionnaireHome from "./pages/QuestionnaireHome";
 
 Amplify.configure(awsconfig);
 
@@ -20,7 +21,8 @@ function App() {
   return authState === AuthState.SignedIn && user ? (
     <div className="App">
       <div>Hello, {user.username}</div>
-      <AmplifySignOut />
+      {/*<AmplifySignOut />*/}
+      <QuestionnaireHome />
     </div>
   ) : (
     <AmplifyAuthenticator>
