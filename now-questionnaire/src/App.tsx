@@ -1,41 +1,36 @@
 import React from 'react'
 import Amplify from 'aws-amplify'
-import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components'
 import awsconfig from './aws-exports'
-import { AmplifyAuthenticator, AmplifySignOut, AmplifySignUp } from "@aws-amplify/ui-react";
+import {AmplifyAuthenticator, AmplifySignIn, AmplifySignUp} from "@aws-amplify/ui-react";
 import QuestionnaireHome from "./pages/QuestionnaireHome";
 
 Amplify.configure(awsconfig);
 
 function App() {
-  const [authState, setAuthState] = React.useState<AuthState | null>()
-  const [user, setUserState] = React.useState<any>()
+    return (
+        <>
+            <AmplifyAuthenticator>
+                <AmplifySignUp
+                    slot="sign-up"
+                    formFields={[
+                        {type: "username"},
+                        {type: "password"},
+                        {type: "email"},
+                    ]}
+                />
 
-  React.useEffect(() => {
-    return onAuthUIStateChange((nextAuthState, authData) => {
-      setAuthState(nextAuthState)
-      setUserState(authData)
-    })
-  }, [])
+                <AmplifySignIn
+                    slot="sign-in"
+                    headerText="Sign in to your account"
+                />
 
-  return authState === AuthState.SignedIn && user ? (
-    <div className="App">
-      <div>Hello, {user.username}</div>
-      {/*<AmplifySignOut />*/}
-      <QuestionnaireHome />
-    </div>
-  ) : (
-    <AmplifyAuthenticator>
-      <AmplifySignUp
-        slot="sign-up"
-        formFields={[
-          { type: "username" },
-          { type: "password" },
-          { type: "email" },
-        ]}
-      />
-    </AmplifyAuthenticator>
-  )
+                <div className="App">
+                    <QuestionnaireHome/>
+                </div>
+
+            </AmplifyAuthenticator>
+        </>
+    )
 }
 
 export default App

@@ -1,8 +1,8 @@
-import { Button, Drawer } from "@material-ui/core";
-import { List } from "@material-ui/core";
-import { ListItem } from "@material-ui/core";
-import { ListItemText } from "@material-ui/core";
-import { Auth } from "aws-amplify";
+import {Button, Drawer} from "@material-ui/core";
+import {List} from "@material-ui/core";
+import {ListItem} from "@material-ui/core";
+import {ListItemText} from "@material-ui/core";
+import {Auth} from "aws-amplify";
 
 function Sidebar() {
     const signOut = () => {
@@ -26,7 +26,7 @@ function Sidebar() {
                         >
                             Logout
                         </Button>
-                    } />
+                    }/>
                 </ListItem>
             </List>
         </Drawer>
